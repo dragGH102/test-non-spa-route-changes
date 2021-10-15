@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Plain app with routes - page2</title>
+      <script>
+          window.onpageshow = function(event) {
+              if (event.persisted) {
+                  location.reload();
+              }
+          };
+      </script>
+  </head>
+  <body>
+      <h3>third page</h3>
+      <a href="/index.html">go to main page (index.html)</a> _ <a href="/page2.html">go to second page</a>
+
+        <div>
+            Current page history:
+            <div id="page-history" style="width: 500px; border: 1px solid red; padding: 10px;"/>
+        </div>
+
+        <script>
+            console.log('page 2: href/hash', window.location.href, '/', window.location.hash);
+            let links = localStorage.getItem('links');
+            links = (links && links.split(',')) || [];
+            links.push(" " + window.location.href);
+            localStorage.setItem('links', links);
+            document.getElementById('page-history').innerHTML = links;
+        </script>
+  </body>
+</html>
